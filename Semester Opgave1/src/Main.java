@@ -1,12 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
-        System.out.println("heej");
-        import java.util.Scanner; // Import the Scanner class
-
-        public class semesterprojekt1 {
             public static void main(String[] args) {
                 Scanner reader = new Scanner(System.in); // Create a Scanner object
 
@@ -81,6 +75,3 @@ public class Main {
                 }
             }
         }
-
-    }
-}
