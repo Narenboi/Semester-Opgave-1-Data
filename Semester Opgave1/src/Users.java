@@ -9,11 +9,37 @@ public class Users {
     private String tlfNr;
     private String kontoNr;
     private String regNr;
+    private String beloeb = String.valueOf(0);
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "userID=" + userID +
+                ", fnavn='" + fnavn + '\'' +
+                ", enavn='" + enavn + '\'' +
+                ", mail='" + mail + '\'' +
+                ", cprNr='" + cprNr + '\'' +
+                ", tlfNr='" + tlfNr + '\'' +
+                ", kontoNr='" + kontoNr + '\'' +
+                ", regNr='" + regNr + '\'' +
+                ", balance='" + balance + '\'' +
+                '}';
+    }
+
+    private String balance;
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
 
     public Users () {
 
     }
-    public Users(Integer userID, String fnavn, String enavn, String mail, String cprNr, String tlfNr, String kontoNr, String regNr) {
+    public Users(Integer userID, String fnavn, String enavn, String mail, String cprNr, String tlfNr, String kontoNr, String regNr, String balance) {
         this.userID = userID;
         this.fnavn = fnavn;
         this.enavn = enavn;
@@ -22,6 +48,7 @@ public class Users {
         this.tlfNr = tlfNr;
         this.kontoNr = kontoNr;
         this.regNr = regNr;
+        this.balance = balance;
     }
 
     public Integer getUserID() {
@@ -88,17 +115,11 @@ public class Users {
         this.regNr = regNr;
     }
 
-    @Override
-    public String toString() {
-        return "Users{" +
-                "userID=" + userID +
-                ", fnavn='" + fnavn + '\'' +
-                ", enavn='" + enavn + '\'' +
-                ", mail='" + mail + '\'' +
-                ", cprNr=" + cprNr +
-                ", tlfNr=" + tlfNr +
-                ", kontoNr=" + kontoNr +
-                ", regNr=" + regNr +
-                '}';
+    public void setBeloeb(String beloeb) {
+        this.beloeb = beloeb;
+    }
+
+    public String getBeloeb() {
+        return beloeb;
     }
 }

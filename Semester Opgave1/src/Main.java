@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +10,7 @@ public class Main {
     public static Users createUser() {
         Scanner in = new Scanner(System.in);
         Users u1 = new Users();
-        System.out.println("fnavn, enavn, mail, cprNr, tlfNr, kontoNr, regNr");
+        System.out.println("fnavn, enavn, mail, cprNr, tlfNr, kontoNr, regNr, balance");
         // u1.setUserID(in.next());
         u1.setFnavn(in.next());
         u1.setEnavn(in.next());
@@ -20,6 +19,7 @@ public class Main {
         u1.setCprNr(String.valueOf((in.next())));
         u1.setKontoNr(String.valueOf((in.next())));
         u1.setRegNr(String.valueOf((in.next())));
+        u1.setBalance(String.valueOf((in.next())));
         return u1;
     }
     public static void menu(){
@@ -28,6 +28,9 @@ public class Main {
         Users u = createUser();
         DbSql db = new DbSql();
         db.indsaetUser(u);
+        System.out.println("indtast beløbet du vil sende");
+        u.setBeloeb(String.valueOf((input.next())));
+        db.updateUserBalance(1,2, Integer.parseInt(u.getBeloeb()));
 
          /*   switch(valg){
         case 1:
