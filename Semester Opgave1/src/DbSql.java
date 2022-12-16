@@ -9,7 +9,7 @@ public class DbSql {
         connection = null;
         stmt = null;
         try {
-            String url = "jdbc:sqlite:C://Users/luhav/OneDrive/Skrivebord/Løsningsforslag til opgaven 301122/Datebase1.db";
+            String url = "jdbc:sqlite:C://Users/luhav/OneDrive/Skrivebord/Semester projekts/Semester-Opgave-1-Data-rigtige/databaseProjekt1Rigtige.db";
             connection = DriverManager.getConnection(url);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -18,9 +18,8 @@ public class DbSql {
 
     public void indsaetUser(Users u1) {
         try {
-            String sql = "INSERT INTO Users (fnavn,enavn,mail,tlfNr,cprNr,kontoNr,regNr) VALUES('" +
-                    u1.getFnavn() + "','" + u1.getEnavn() + "',";
-            sql = sql + u1.getMail() + "','" + u1.getTlfNr() + "','" + u1.getCprNr() + "','" + u1.getKontoNr() + "','" + u1.getRegNr() + "";
+            String sql = "INSERT INTO User (fnavn,enavn,mail,tlfnr,cprnr,kontonr,regnr) VALUES('" +
+                    u1.getFnavn() + "','" + u1.getEnavn() + "','" + u1.getMail() + "','" + u1.getTlfNr() + "','" + u1.getCprNr() + "','" + u1.getKontoNr() + "','" + u1.getRegNr() + "')";
             Statement stmt = connection.createStatement();
             stmt.execute(sql);
             System.out.println("Connection to SQLite has been established.");
@@ -77,6 +76,17 @@ public class DbSql {
             throwables.printStackTrace();
         }
     }
+    public void indsaetUserCprNr(Users cprNr) {
+        try {
+            String sql = "INSERT INTO User (cprNr) VALUES('" + cprNr.getCprNr() + "'";
+            Statement stmt = connection.createStatement();
+            stmt.execute(sql);
+            System.out.println("Connection to SQLite has been established.");
+            stmt.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     public void indsaetUserKontoNr(Users kontoNr) {
         try {
@@ -118,5 +128,8 @@ public class DbSql {
     }
 
     public void indsaetUserRegNr(int nextInt) {
+    }
+
+    public void indsaetUserCprNr(int nextInt) {
     }
 }

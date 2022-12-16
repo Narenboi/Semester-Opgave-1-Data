@@ -5,15 +5,15 @@ public class Users {
     private String fnavn;
     private String enavn;
     private String mail;
-    private Integer cprNr;
-    private Integer tlfNr;
-    private Integer kontoNr;
-    private Integer regNr;
+    private String cprNr;
+    private String tlfNr;
+    private String kontoNr;
+    private String regNr;
 
     public Users () {
 
     }
-    public Users(Integer userID, String fnavn, String enavn, String mail, Integer cprNr, Integer tlfNr, Integer kontoNr, Integer regNr) {
+    public Users(Integer userID, String fnavn, String enavn, String mail, String cprNr, String tlfNr, String kontoNr, String regNr) {
         this.userID = userID;
         this.fnavn = fnavn;
         this.enavn = enavn;
@@ -56,35 +56,35 @@ public class Users {
         this.mail = mail;
     }
 
-    public Integer getCprNr() {
+    public String getCprNr() {
         return cprNr;
     }
 
-    public void setCprNr(Integer cprNr) {
+    public void setCprNr(String cprNr) {
         this.cprNr = cprNr;
     }
 
-    public Integer getTlfNr() {
+    public String getTlfNr() {
         return tlfNr;
     }
 
-    public void setTlfNr(Integer tlfNr) {
+    public void setTlfNr(String tlfNr) {
         this.tlfNr = tlfNr;
     }
 
-    public Integer getKontoNr() {
+    public String getKontoNr() {
         return kontoNr;
     }
 
-    public void setKontoNr(Integer kontoNr) {
+    public void setKontoNr(String kontoNr) {
         this.kontoNr = kontoNr;
     }
 
-    public Integer getRegNr() {
+    public String getRegNr() {
         return regNr;
     }
 
-    public void setRegNr(Integer regNr) {
+    public void setRegNr(String regNr) {
         this.regNr = regNr;
     }
 
