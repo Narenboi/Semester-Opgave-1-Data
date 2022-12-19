@@ -1,4 +1,8 @@
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static jdk.internal.org.jline.utils.Colors.s;
 
 public class Main {
 
@@ -22,37 +26,47 @@ public class Main {
         u1.setBalance(String.valueOf((in.next())));
         return u1;
     }
-    public static void menu(){
+
+    public static void menu() {
         int valg = 1;
         Scanner input = new Scanner(System.in);
-        Users u = createUser();
         DbSql db = new DbSql();
-        db.indsaetUser(u);
-        System.out.println("indtast beløbet du vil sende");
-        u.setBeloeb(String.valueOf((input.next())));
-        db.updateUserBalance(1,2, Integer.parseInt(u.getBeloeb()));
+        Users u = new Users();
+        ArrayList<Users> users = new ArrayList<Users>();
 
-         /*   switch(valg){
-        case 1:
-            System.out.print("Indtast fornavn: ");
-            db.indsaetUserFornavn(input.next());
-        case 2: System.out.println("Indtast efternavn");
-            db.indsaetUserEfterNavn(input.next());
-        case 3: System.out.println("Indtast E-mail");
-            db.indsaetUserEmail(input.next());
-        case 4: System.out.println("Indtast tlfNr");
-            db.indsaetUserTlfNr(input.nextInt());
-        case 5: System.out.println("Indtast cprNr");
+        while (valg != 0) {
+            System.out.println("1. Opret ny User");
+            System.out.println("2. Udskriv oplysninger om en User ");
+            System.out.println("3. Udskriv alle oplysninger om alle Users ");
+            System.out.println("4. Send penge ");
+            System.out.println("5. Slet user ");
+            System.out.println("0. Stop programmet");
+            System.out.print("Indtast valg:  ");
+            valg = input.nextInt();
+            switch (valg) {
+                case 1:
+                    u = createUser();
+                    db.indsaetUser(u);
+                    break;
+                case 2:
+                    System.out.println("Indtast UserID");
+                    u = db.soegUserID(input.nextInt());
+                    System.out.println(u.toString());
+                    break;
+                case 3:
+                    users.clear();
+                    users = db.alleoplysninger();
+                    for (int i = 0; i < users.size(); i++) {
+                        System.out.format("%s \n", users.get(i).toString());
+                    }
+                    break;
+                case 4:
+                    System.out.println("indtast beløbet du vil sende");
+                    u.setBeloeb(String.valueOf((input.next())));
+                    db.updateUserBalance(1, 2, Integer.parseInt(u.getBeloeb()));
+                    break;
 
-            createUser().getCprNr() = (int) ( createUser().getCprNr() % 10);
-            createUser().getCprNr() /= 10;
-
-        case 6: System.out.println("Indtast KontoNr");
-                    db.indsaetUserKontoNr(input.nextInt());
-        case 7: System.out.println("Indtast regNr");
-                    db.indsaetUserRegNr(input.nextInt());
             }
-
-          */
-            }
-}
+        }
+    }
+    }

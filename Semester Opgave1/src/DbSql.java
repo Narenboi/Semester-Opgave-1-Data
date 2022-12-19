@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DbSql {
     private Connection connection;
@@ -17,8 +18,8 @@ public class DbSql {
     }
 
     public void indsaetUser(Users u1) {
-        try {
-            String sql = "INSERT INTO User (fnavn,enavn,mail,tlfnr,cprnr,kontonr,regnr, balance) VALUES('" + u1.getFnavn() + "','" + u1.getEnavn() + "','" + u1.getMail() + "','" +
+        try {            String sql = "INSERT INTO User (fnavn,enavn,mail,tlfnr,cprnr,kontonr,regnr, balance) VALUES('" + u1.getFnavn() + "','" + u1.getEnavn() + "','" + u1.getMail() + "','" +
+
                     u1.getTlfNr() + "','" + u1.getCprNr() + "','" + u1.getKontoNr() + "','" + u1.getRegNr() + "','" + u1.getBalance() + "')";
             Statement stmt = connection.createStatement();
             stmt.execute(sql);
@@ -28,6 +29,7 @@ public class DbSql {
             throwables.printStackTrace();
         }
     }
+
     public void updateUserBalance(int user1, int user2, int beloeb) {
         try {
             //String sql = "UPDATE studerende SET klasse = '" + overførsel + "' WHERE stdnr=" + stdnr;
@@ -35,7 +37,6 @@ public class DbSql {
             String sql = "UPDATE User SET balance = balance - '" + beloeb + "' WHERE UserID=" + user1;
 
             String sql2 = "UPDATE User SET balance = balance + '" + beloeb + "' WHERE UserID=" + user2;
-
 
 
             Statement stmt = connection.createStatement();
@@ -47,6 +48,62 @@ public class DbSql {
             throwables.printStackTrace();
         }
     }
+
+    public ArrayList<Users> alleoplysninger() {
+        ArrayList<Users> users = new ArrayList<Users>();
+        String sql = "select * from User";
+        try {
+            Statement stmt = connection.createStatement();
+            Statement stmt1 = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Users u = new Users();
+                int UserID = rs.getInt("UserID");
+                u.setUserID(UserID);
+                u.setFnavn(rs.getString("fnavn"));
+                u.setEnavn(rs.getString("enavn"));
+                u.setMail(rs.getString("mail"));
+                u.setCprNr(rs.getString("tlfnr"));
+                u.setTlfNr(rs.getString("cprnr"));
+                u.setKontoNr(rs.getString("kontonr"));
+                u.setRegNr(rs.getString("regnr"));
+                u.setBalance(rs.getString("balance"));
+                users.add(u);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
+    }
+    public Users soegUserID(int UserID) {
+        Users u = new Users();
+        String sql = "SELECT * from User where UserID=" + String.valueOf(UserID);
+        try {
+            connection.setAutoCommit(true);
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                u.setUserID(rs.getInt("UserID"));
+                u.setFnavn(rs.getString("fnavn"));
+                u.setEnavn(rs.getString("enavn"));
+                u.setMail(rs.getString("mail"));
+                u.setCprNr(rs.getString("tlfnr"));
+                u.setTlfNr(rs.getString("cprnr"));
+                u.setKontoNr(rs.getString("kontonr"));
+                u.setRegNr(rs.getString("regnr"));
+                u.setBalance(rs.getString("balance"));
+            } else
+                u = null;
+            stmt.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return u;
+    }
+}
+
 
 
     /*
@@ -169,4 +226,3 @@ public class DbSql {
     }
 
      */
-}
