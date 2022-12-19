@@ -31,7 +31,7 @@ public class Main {
         int valg = 1;
         Scanner input = new Scanner(System.in);
         DbSql db = new DbSql();
-        Users u = new Users();
+        Users u;
         ArrayList<Users> users = new ArrayList<Users>();
 
         while (valg != 0) {
@@ -39,7 +39,6 @@ public class Main {
             System.out.println("2. Udskriv oplysninger om en User ");
             System.out.println("3. Udskriv alle oplysninger om alle Users ");
             System.out.println("4. Send penge ");
-            System.out.println("5. Slet user ");
             System.out.println("0. Stop programmet");
             System.out.print("Indtast valg:  ");
             valg = input.nextInt();
@@ -61,11 +60,9 @@ public class Main {
                     }
                     break;
                 case 4:
-                    System.out.println("indtast beløbet du vil sende");
-                    u.setBeloeb(String.valueOf((input.next())));
-                    db.updateUserBalance(1, 2, Integer.parseInt(u.getBeloeb()));
+                    System.out.println("Indtast først dit id, så modtagers id, og til sidst beløb");
+                    db.updateUserBalance(input.nextInt(), input.nextInt(), input.nextInt());
                     break;
-
             }
         }
     }

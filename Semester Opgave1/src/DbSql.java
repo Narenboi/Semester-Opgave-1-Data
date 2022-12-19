@@ -30,13 +30,13 @@ public class DbSql {
         }
     }
 
-    public void updateUserBalance(int user1, int user2, int beloeb) {
+    public void updateUserBalance(int UserID1, int UserID2, int beloeb) {
         try {
             //String sql = "UPDATE studerende SET klasse = '" + overførsel + "' WHERE stdnr=" + stdnr;
 
-            String sql = "UPDATE User SET balance = balance - '" + beloeb + "' WHERE UserID=" + user1;
+            String sql = "UPDATE User SET balance = balance - '" + beloeb + "' WHERE UserID =" + UserID1;
 
-            String sql2 = "UPDATE User SET balance = balance + '" + beloeb + "' WHERE UserID=" + user2;
+            String sql2 = "UPDATE User SET balance = balance + '" + beloeb + "' WHERE UserID =" + UserID2;
 
 
             Statement stmt = connection.createStatement();
