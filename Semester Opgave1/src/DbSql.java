@@ -18,8 +18,8 @@ public class DbSql {
     }
 
     public void indsaetUser(Users u1) {
-        try {            String sql = "INSERT INTO User (fnavn,enavn,mail,tlfnr,cprnr,kontonr,regnr, balance) VALUES('" + u1.getFnavn() + "','" + u1.getEnavn() + "','" + u1.getMail() + "','" +
-
+        try {
+            String sql = "INSERT INTO User (fnavn,enavn,mail,tlfnr,cprnr,kontonr,regnr, balance) VALUES('" + u1.getFnavn() + "','" + u1.getEnavn() + "','" + u1.getMail() + "','" +
                     u1.getTlfNr() + "','" + u1.getCprNr() + "','" + u1.getKontoNr() + "','" + u1.getRegNr() + "','" + u1.getBalance() + "')";
             Statement stmt = connection.createStatement();
             stmt.execute(sql);
@@ -32,16 +32,17 @@ public class DbSql {
 
     public void updateUserBalance(int UserID1, int UserID2, int beloeb) {
         try {
-            //String sql = "UPDATE studerende SET klasse = '" + overførsel + "' WHERE stdnr=" + stdnr;
 
             String sql = "UPDATE User SET balance = balance - '" + beloeb + "' WHERE UserID =" + UserID1;
-
             String sql2 = "UPDATE User SET balance = balance + '" + beloeb + "' WHERE UserID =" + UserID2;
+            String sql3 = "INSERT INTO Historik(UserIDAfsender, UserIDModtager, balance) VALUES ('"+UserID1+"', '"+UserID2+"', '"+beloeb+"')";
+
 
 
             Statement stmt = connection.createStatement();
             stmt.execute(sql);
             stmt.execute(sql2);
+            stmt.execute(sql3);
             System.out.println("beløbet er sendt/modtaget.");
             stmt.close();
         } catch (SQLException throwables) {
