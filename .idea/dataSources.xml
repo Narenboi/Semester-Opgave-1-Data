@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="projekt2" group="C:\Users\luhav\OneDrive\Skrivebord\Semester projekts\Semester-Opgave-1-Data-rigtige" uuid="a80d161a-1477-47de-96f8-feebbfc8d793">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\luhav\OneDrive\Skrivebord\Semester projekts\Semester-Opgave-1-Data-rigtige\Semester Opgave1\identifier.sqlite</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="databaseProjekt1Rigtige.db" uuid="d272ef90-ef9d-46ea-9126-736853f659d5">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/databaseProjekt1Rigtige.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
